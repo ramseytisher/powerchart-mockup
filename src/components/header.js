@@ -1,8 +1,19 @@
 import { Link } from "gatsby"
-import PropTypes from "prop-types"
 import React from "react"
 
-const Header = ({ siteTitle }) => (
+import {
+  Affix,
+  Row,
+  Col,
+  Button,
+  Popconfirm,
+  Typography,
+  message,
+  Icon,
+} from "antd"
+const { Title, Text } = Typography
+
+export default ({ siteTitle }) => (
   <header
     style={{
       background: `rebeccapurple`,
@@ -30,13 +41,3 @@ const Header = ({ siteTitle }) => (
     </div>
   </header>
 )
-
-Header.propTypes = {
-  siteTitle: PropTypes.string,
-}
-
-Header.defaultProps = {
-  siteTitle: ``,
-}
-
-export default Header
