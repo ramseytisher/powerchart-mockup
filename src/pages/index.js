@@ -3,16 +3,12 @@ import { Link } from "gatsby"
 
 import Layout from "../components/layout"
 import Image from "../components/image"
-import SEO from "../components/seo"
 
 const IndexPage = () => (
   <Layout>
-    <SEO title="Home" />
     <h1>Hello, world!</h1>
-    <p>Now go re-swizzle something great.</p>
-    <div style={{ maxWidth: `300px`, marginBottom: `1.45rem` }}>
-      <Image />
-    </div>
+    <p>Now go re-swizzle something.</p>
+    <Link to="/dashboard">Go to Dashboard</Link>
   </Layout>
 )
 

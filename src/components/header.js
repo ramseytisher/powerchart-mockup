@@ -1,6 +1,8 @@
 import { Link } from "gatsby"
 import React from "react"
 
+// import Login from "./login"
+
 import {
   Affix,
   Row,
@@ -13,31 +15,40 @@ import {
 } from "antd"
 const { Title, Text } = Typography
 
-export default ({ siteTitle }) => (
-  <header
-    style={{
-      background: `rebeccapurple`,
-      marginBottom: `1.45rem`,
-    }}
-  >
-    <div
+const Header = () => (
+  <Affix>
+    <header
       style={{
+        background: `#fff`,
         margin: `0 auto`,
-        maxWidth: 960,
-        padding: `1.45rem 1.0875rem`,
+        paddingLeft: `1.0875rem`,
+        paddingRight: `1.0875rem`
       }}
     >
-      <h1 style={{ margin: 0 }}>
-        <Link
-          to="/"
-          style={{
-            color: `white`,
-            textDecoration: `none`,
-          }}
-        >
-          {siteTitle}
-        </Link>
-      </h1>
-    </div>
-  </header>
+      <Row type="flex" align="middle" justify="space-between">
+        <Col>
+          <Title>
+            <Link
+              to="/"
+              style={{
+                textDecoration: `none`,
+                color: "#5C6770",
+              }}
+            >
+              <Icon type="highlight" theme="twoTone" /> PowerChart LTC Mockup
+            </Link>
+          </Title>
+        </Col>
+        <Col>
+          <Link to="/dashboard">
+            <Button type="link" size="large">
+              Dashboard
+            </Button>
+          </Link>
+        </Col>
+      </Row>
+    </header>
+  </Affix>
 )
+
+export default Header
