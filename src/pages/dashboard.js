@@ -7,7 +7,7 @@ import DietIcon from "../components/icons/diet-icon"
 import MedIcon from "../components/icons/med-icon"
 import AllergyIcon from "../components/icons/allergy-icon"
 
-import { Table, Tabs, Input, Result, Icon } from "antd"
+import { Table, Tabs, Input, Result, Icon, Progress, Card } from "antd"
 const { TabPane } = Tabs
 const { Search } = Input
 
@@ -40,7 +40,7 @@ const data = [
     allergies: ["Peanut", "Amoxicillin"],
     meds: ["Ibuprofin"],
     diet: ["fluid-restrict", "npo"],
-    alerts: ["no-bm-72","cog", "skin", "fluid-decline"],
+    alerts: ["no-bm-72", "cog", "skin", "fluid-decline"],
   },
 ]
 
@@ -114,11 +114,18 @@ export default () => {
     <Layout>
       <Tabs defaultActiveKey="1">
         <TabPane tab="Alerts" key="1">
-          <Result
-            status="403"
-            title="403"
-            subTitle="Nothing to see hear yet."
-          />
+          <Card title="Last 72 Hours">
+            <Card.Grid style={{ width: '20%' }}><h3>No BM</h3><Progress type="dashboard" percent={32} format={(i) => i} width={75} /></Card.Grid>
+            <Card.Grid style={{ width: '20%' }}><h3>Fall Event</h3><Progress type="dashboard" percent={32} format={(i) => i} width={75} /></Card.Grid>
+            <Card.Grid style={{ width: '20%' }}><h3>Fluid Decline</h3><Progress type="dashboard" percent={32} format={(i) => i} width={75} /></Card.Grid>
+            <Card.Grid style={{ width: '20%' }}><h3>Weight Change</h3><Progress type="dashboard" percent={32} format={(i) => i} width={75} /></Card.Grid>
+          </Card>
+          <Card title="Another Block">
+            <Card.Grid style={{ width: '20%' }}><h3>No BM</h3><Progress type="dashboard" percent={32} format={(i) => i} width={75} /></Card.Grid>
+            <Card.Grid style={{ width: '20%' }}><h3>Fall Event</h3><Progress type="dashboard" percent={32} format={(i) => i} width={75} /></Card.Grid>
+            <Card.Grid style={{ width: '20%' }}><h3>Fluid Decline</h3><Progress type="dashboard" percent={32} format={(i) => i} width={75} /></Card.Grid>
+            <Card.Grid style={{ width: '20%' }}><h3>Weight Change</h3><Progress type="dashboard" percent={32} format={(i) => i} width={75} /></Card.Grid>
+          </Card>
         </TabPane>
         <TabPane tab="Patient List" key="2">
           <Search />
