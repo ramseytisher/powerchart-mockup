@@ -4,7 +4,7 @@ import { Icon } from 'antd'
 
 export default ({med}) => {
     switch(med) {
-        case 'ibuprofen': return <Icon type="alert" />
+        case 'high-risk-med': return <Icon type="alert" />
         default: return null;
     }
 }
