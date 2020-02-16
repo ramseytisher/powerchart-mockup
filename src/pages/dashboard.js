@@ -7,6 +7,7 @@ import DietIcon from "../components/icons/diet-icon"
 import MedIcon from "../components/icons/med-icon"
 import AllergyIcon from "../components/icons/allergy-icon"
 import Filters from "../components/filters"
+import DiagnosisList from "../components/diagnosis-list"
 
 import { initialData } from "../data/patient-data"
 
@@ -40,8 +41,9 @@ const columns = [
     dataIndex: "entryDate",
   },
   {
-    title: "Primary Diagnosis",
-    dataIndex: "primDx",
+    title: "Diagnosis",
+    dataIndex: "dx",
+    render: dx => <DiagnosisList list={dx} />
   },
   {
     title: "Allergies",
