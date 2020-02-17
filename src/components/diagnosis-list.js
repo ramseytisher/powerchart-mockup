@@ -19,7 +19,7 @@ export default ({ list }) => {
   const other = list.filter(item => !item.primary || item.tags.length === 0)
 
   return (
-    <Row type="flex" gutter={4} justify="space-around">
+    <Row type="flex" gutter={4} justify="space-between" align="middle">
       <Col>
         {primary.length > 0 ? (
           <>
@@ -47,20 +47,20 @@ export default ({ list }) => {
           title="NTA Diagnosis"
           content={<pre>{JSON.stringify(nta, null, 2)}</pre>}
         >
-          <Tag>NTA: {nta.length}</Tag>
+          <Tag color={nta.length > 0 && "#5C6770"}>NTA: {nta.length}</Tag>
         </Popover>
         <Popover
           title="SLP Diagnosis"
           content={<pre>{JSON.stringify(slp, null, 2)}</pre>}
         >
-          <Tag>SLP: {slp.length}</Tag>
+          <Tag color={slp.length > 0 && "#5C6770"}>SLP: {slp.length}</Tag>
         </Popover>
         <br />
         <Popover
           title="Other Diagnosis"
           content={<pre>{JSON.stringify(other, null, 2)}</pre>}
         >
-          <Tag>Other: {other.length}</Tag>
+          <Tag color={other.length > 0 && "#5C6770"}>Other: {other.length}</Tag>
         </Popover>
       </Col>
     </Row>
