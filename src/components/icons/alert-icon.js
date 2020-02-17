@@ -25,12 +25,7 @@ export default ({ alert }) => {
     case "weight-vary":
       return <Icon type="stock" />
     case "skin-2":
-      return (
-        <Badge count={2}>
-          {" "}
-          <Icon type="disconnect" />
-        </Badge>
-      )
+      return <Icon type="disconnect" />
     default:
       return null
   }

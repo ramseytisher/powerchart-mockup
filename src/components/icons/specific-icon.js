@@ -16,6 +16,12 @@ export default ({ specific }) => {
           <Icon type="medicine-box" />
         </Popover>
       )
+    case "medicare":
+      return (
+        <Popover title="Medicare" content={<Hospice />}>
+          <Icon type="bank" />
+        </Popover>
+      )
     case "admission-today":
       return (
         <Popover title="Admission Today" content={<Hospice />}>

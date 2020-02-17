@@ -48,7 +48,7 @@ export const initialData = [
     gender: "female",
     room: "101",
     entryDate: "1/1/2020",
-    specifics: ["admission-today", "no-care-plan"],
+    specifics: ["admission-today", "medicare", "no-care-plan"],
     dx: [],
     allergies: ["food"],
     meds: [],
