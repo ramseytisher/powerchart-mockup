@@ -33,12 +33,12 @@ const { Search } = Input
 const PatientTitle = styled.p`
   color: black;
   font-size: 1rem;
-  margin: 0; 
+  margin: 0;
 `
 
 const PatientInfo = styled.p`
-  font-size: .75rem;
-  margin: 0; 
+  font-size: 0.75rem;
+  margin: 0;
   color: gray;
   font-style: italic;
 `
@@ -52,9 +52,12 @@ const columns = [
         <Col>
           <Avatar shape="square" icon="user" />
         </Col>
-        <Col style={{ paddingLeft: '10px' }}>
+        <Col style={{ paddingLeft: "10px" }}>
           <PatientTitle>{name}</PatientTitle>
-          <PatientInfo>Room: {record.room} | LOS: {record.entryDate} | Gender: {record.gender}</PatientInfo>
+          <PatientInfo>
+            Room: {record.room} | LOS: {record.entryDate} | Gender:{" "}
+            {record.gender}
+          </PatientInfo>
         </Col>
       </Row>
     ),
@@ -274,20 +277,13 @@ export default () => {
               />
             </Col>
             <Col span={16}>
-              <Filters filters={filters} handleFilter={handleFilter} />
+              <Filters
+                filters={filters}
+                handleReset={handleReset}
+                handleFilter={handleFilter}
+              />
             </Col>
           </Row>
-          {(filters.length > 0 || search.length > 0) && (
-            <Button
-              style={{ margin: 8 }}
-              type="dashed"
-              block
-              icon="reload"
-              onClick={() => handleReset()}
-            >
-              Clear Filters
-            </Button>
-          )}
           <Table
             size="small"
             columns={columns}
