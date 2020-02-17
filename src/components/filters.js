@@ -14,6 +14,7 @@ export default ({ filters, handleFilter, handleReset }) => {
   return (
     <Tabs
       style={{ padding: "8px" }}
+      size="small"
       tabBarExtraContent={
         <Button disabled={filters.length === 0} onClick={() => handleReset()}>
           Reset [{filters.length}]
