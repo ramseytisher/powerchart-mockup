@@ -65,7 +65,7 @@ export const initialData = [
       {
         code: "S47.1XXA",
         primary: true,
-        description: "Shoulder Replacement of Right Knee",
+        description: "Shoulder Replacement (Right)",
         clinical: "Orthopedic Surgery",
         tags: [],
       },
