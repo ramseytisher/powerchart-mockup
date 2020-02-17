@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from "react"
 import { Link } from "gatsby"
+import styled from "styled-components"
 
 import Layout from "../components/layout"
 import AlertIcon from "../components/icons/alert-icon"
 import DietIcon from "../components/icons/diet-icon"
 import MedIcon from "../components/icons/med-icon"
 import AllergyIcon from "../components/icons/allergy-icon"
+import SpecificIcon from "../components/icons/specific-icon"
 import Filters from "../components/filters"
 import DiagnosisList from "../components/diagnosis-list"
 
@@ -23,27 +25,56 @@ import {
   Card,
   Row,
   Col,
+  Avatar,
 } from "antd"
 const { TabPane } = Tabs
 const { Search } = Input
 
+const PatientTitle = styled.p`
+  color: black;
+  font-size: 1rem;
+  margin: 0; 
+`
+
+const PatientInfo = styled.p`
+  font-size: .75rem;
+  margin: 0; 
+  color: gray;
+  font-style: italic;
+`
+
 const columns = [
   {
-    title: "Name",
+    title: "Patient Information",
     dataIndex: "name",
+    render: (name, record) => (
+      <Row type="flex" gutter={4} align="middle">
+        <Col>
+          <Avatar shape="square" icon="user" />
+        </Col>
+        <Col style={{ paddingLeft: '10px' }}>
+          <PatientTitle>{name}</PatientTitle>
+          <PatientInfo>Room: {record.room} | LOS: {record.entryDate} | Gender: {record.gender}</PatientInfo>
+        </Col>
+      </Row>
+    ),
   },
   {
-    title: "Room",
-    dataIndex: "room",
-  },
-  {
-    title: "LOS",
-    dataIndex: "entryDate",
+    title: "Specifics",
+    dataIndex: "specifics",
+    render: specifics => (
+      <span>
+        {specifics.map(specific => {
+          console.log("sp: ", specific)
+          return <SpecificIcon specific={specific} />
+        })}
+      </span>
+    ),
   },
   {
     title: "Diagnosis",
     dataIndex: "dx",
-    render: dx => <DiagnosisList list={dx} />
+    render: dx => <DiagnosisList list={dx} />,
   },
   {
     title: "Allergies",
@@ -68,7 +99,7 @@ const columns = [
     ),
   },
   {
-    title: "Diets",
+    title: "I/O",
     dataIndex: "diets",
     render: diets => (
       <span>
