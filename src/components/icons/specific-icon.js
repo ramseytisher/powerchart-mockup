@@ -36,6 +36,12 @@ export default ({ specific }) => {
           </Badge>
         </Popover>
       )
+    case "no-physician-signature":
+      return (
+        <Popover title="Physician Orders Without Signature" content={<Hospice />}>
+            <Icon type="edit" />
+        </Popover>
+      )
     default:
       return null
   }
