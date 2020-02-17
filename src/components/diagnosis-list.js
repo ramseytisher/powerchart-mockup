@@ -1,7 +1,7 @@
 import React from "react"
 import styled from "styled-components"
 
-import { Row, Col, Tag, Badge } from "antd"
+import { Row, Col, Tag, Badge, Popover } from "antd"
 
 const DiagnosisText = styled.p`
   font-size: 0.8rem;
@@ -16,10 +16,10 @@ export default ({ list }) => {
   const primary = list.filter(item => item.primary)
   const nta = list.filter(item => item.tags.indexOf("NTA") !== -1)
   const slp = list.filter(item => item.tags.indexOf("SLP") !== -1)
-  const other = list.filter(item => (!item.primary || item.tags.length === 0))
+  const other = list.filter(item => !item.primary || item.tags.length === 0)
 
   return (
-    <Row type="flex" gutter={8} justify="space-between">
+    <Row type="flex" gutter={4} justify="space-around">
       <Col>
         {primary.length > 0 ? (
           <>
@@ -30,6 +30,11 @@ export default ({ list }) => {
               </Col>
               <Col>
                 <Tag color="#00A8E1">Primary</Tag>
+                {primary[0].clinical === "Return To Provider" ? (
+                  <Tag color="#EF7622">Return To Provider</Tag>
+                ) : (
+                  <Tag color="#6D3075">{primary[0].clinical}</Tag>
+                )}
               </Col>
             </Row>
           </>
@@ -38,10 +43,25 @@ export default ({ list }) => {
         )}
       </Col>
       <Col>
-        <Tag>NTA: {nta.length}</Tag>
-        <Tag>SLP: {slp.length}</Tag>
+        <Popover
+          title="NTA Diagnosis"
+          content={<pre>{JSON.stringify(nta, null, 2)}</pre>}
+        >
+          <Tag>NTA: {nta.length}</Tag>
+        </Popover>
+        <Popover
+          title="SLP Diagnosis"
+          content={<pre>{JSON.stringify(slp, null, 2)}</pre>}
+        >
+          <Tag>SLP: {slp.length}</Tag>
+        </Popover>
         <br />
-        <Tag>Other: {other.length}</Tag>
+        <Popover
+          title="Other Diagnosis"
+          content={<pre>{JSON.stringify(other, null, 2)}</pre>}
+        >
+          <Tag>Other: {other.length}</Tag>
+        </Popover>
       </Col>
     </Row>
   )
